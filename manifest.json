@@ -1,0 +1,30 @@
+{
+  "name": "Text Saver",
+  "version": "1.0.0",
+  "description": "Save texts anytime, anywhere",
+  "homepage_url": "https://github.com/jiacai2050/text-saver",
+  "author": "liujiacai@yandex.com",
+  "action": {
+    "default_title": "Save texts anytime, anywhere",
+    "default_icon": "logo.png"
+  },
+  "icons": {
+    "100": "logo.png"
+  },
+  "options_ui": {
+    "page": "option.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "contextMenus",
+    "notifications",
+    "downloads",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "manifest_version": 3
+}
