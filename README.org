@@ -1,0 +1,12 @@
+#+TITLE: Text Saver
+#+DATE: 2023-03-11T17:50:32+0800
+#+LASTMOD: 2023-03-11T17:50:32+0800
+#+AUTHOR: Jiacai Liu
+#+EMAIL: blog@liujiacai.net
+#+OPTIONS: toc:nil num:nil
+#+STARTUP: content
+
+A Chrome extension to save texts anytime, anywhere.
+
+* License
+[[http://liujiacai.net/license/MIT.html?year=2015][MIT License]] © Jiacai Liu

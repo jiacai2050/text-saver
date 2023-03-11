@@ -6,10 +6,10 @@
   "author": "liujiacai@yandex.com",
   "action": {
     "default_title": "Save texts anytime, anywhere",
-    "default_icon": "logo.png"
+    "default_icon": "imgs/logo.png"
   },
   "icons": {
-    "100": "logo.png"
+    "100": "imgs/logo.png"
   },
   "options_ui": {
     "page": "option.html",

@@ -33,7 +33,7 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
     title: pageUrl,
     contextMessage: 'Saved',
     message: selectionText,
-    iconUrl: 'logo.png',
+    iconUrl: 'imgs/logo.png',
   });
 });
 
