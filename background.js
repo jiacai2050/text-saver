@@ -1,20 +1,20 @@
 'use strict';
 
-const ADD_NOTE_ID  = 'add-to-notes';
+const ADD_NOTE_ID = 'add-to-notes';
 chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.create({
     id: ADD_NOTE_ID,
     title: 'Add to Text Saver',
     type: 'normal',
-    contexts: ['selection', 'page']
+    contexts: ['selection', 'page'],
   });
 });
 
 chrome.contextMenus.onClicked.addListener(async (item) => {
-  let {pageUrl, selectionText} = item;
+  let { pageUrl, selectionText } = item;
   console.log(`item: ${pageUrl}, tab: ${selectionText}`);
   // when selection is null, fallback to url
-  if(!selectionText) {
+  if (!selectionText) {
     selectionText = pageUrl;
   }
 
@@ -22,9 +22,9 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
   const now = Date.now();
   const row = {
     [uuid]: {
-      'url': pageUrl,
-      'text': selectionText,
-      'createdAt': now,
+      url: pageUrl,
+      text: selectionText,
+      createdAt: now,
     },
   };
   await chrome.storage.local.set(row);
@@ -37,6 +37,6 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
   });
 });
 
-chrome.action.onClicked.addListener(function() {
-    chrome.runtime.openOptionsPage();
+chrome.action.onClicked.addListener(function () {
+  chrome.runtime.openOptionsPage();
 });

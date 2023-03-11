@@ -18,13 +18,15 @@ async function textStats() {
 
 async function refresh() {
   let rows = [];
-  for (const [id, {text, url, createdAt}] of Object.entries(await getTexts())) {
+  for (const [id, { text, url, createdAt }] of Object.entries(
+    await getTexts()
+  )) {
     rows.push([id, text, url, createdAt]);
   }
   // sort by createdAt desc
   rows.sort((a, b) => b[3] - a[3]);
   let table = [];
-  for(const row of rows) {
+  for (const row of rows) {
     let [id, text, url, createdAt] = row;
     table.push(`<tr>
 <td id="text-${id}">${text}</td>
@@ -40,21 +42,23 @@ async function refresh() {
 </tr>`);
   }
 
-  document.getElementById('text-list').innerHTML = table.join("");
+  document.getElementById('text-list').innerHTML = table.join('');
 
-  for(const row of rows) {
+  for (const row of rows) {
     let [id, text] = row;
     document.getElementById(`btn-delete-${id}`).onclick = async function () {
-      if(confirm("Are you sure?")) {
+      if (confirm('Are you sure?')) {
         await removeTexts(id);
         refresh();
       }
     };
     const copyButton = document.getElementById(`btn-copy-${id}`);
     copyButton.onclick = function () {
-      navigator.clipboard.writeText(document.getElementById(`text-${id}`).innerHTML);
+      navigator.clipboard.writeText(
+        document.getElementById(`text-${id}`).innerHTML
+      );
       copyButton.innerHTML = 'Copied';
-      setTimeout(function() {
+      setTimeout(function () {
         copyButton.innerHTML = 'Copy';
       }, 1000);
     };
@@ -63,22 +67,21 @@ async function refresh() {
 
 window.onload = async function () {
   document.getElementById('btn-clear').onclick = async function () {
-    if (confirm("Are you sure to clear all texts?") ) {
+    if (confirm('Are you sure to clear all texts?')) {
       await clearTexts();
       await refresh();
     }
   };
-  document.getElementById('btn-refresh').onclick = refresh;
   document.getElementById('btn-export').onclick = async function () {
     const allTexts = await getTexts();
-    const payload = new Blob([JSON.stringify(allTexts, null, 2)], {type: 'application/json'});
-    chrome.downloads.download(
-      {
-        url: URL.createObjectURL(payload),
-        saveAs: true,
-        filename: 'saved-texts.json'
-      }
-    )
+    const payload = new Blob([JSON.stringify(allTexts, null, 2)], {
+      type: 'application/json',
+    });
+    chrome.downloads.download({
+      url: URL.createObjectURL(payload),
+      saveAs: true,
+      filename: 'saved-texts.json',
+    });
   };
 
   await refresh();

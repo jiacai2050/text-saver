@@ -6,15 +6,18 @@
 #+OPTIONS: toc:nil num:nil
 #+STARTUP: content
 
-#+begin_example
+[[https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml][https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml/badge.svg]]
+#+begin_quote
 A browser extension to save texts anytime, anywhere.
-#+end_example
+#+end_quote
 
-When click `Add to Text Saver` in context menu, current selection will be saved if there is any,
+When click =Add to Text Saver= in context menu, current selection will be saved if there is any,
 otherwise URL of current tab will be saved.
 
+* Screenshots
 [[file:imgs/640x400.png]]
+[[file:imgs/1280x800.png]]
 * Install
 TBD
 * License
-[[http://liujiacai.net/license/MIT.html?year=2015][MIT License]] © Jiacai Liu
+[[http://liujiacai.net/license/MIT.html?year=2023][MIT License]] © Jiacai Liu
