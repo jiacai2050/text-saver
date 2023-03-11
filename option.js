@@ -27,10 +27,11 @@ async function refresh() {
   for(const row of rows) {
     let [id, text, url, createdAt] = row;
     table.push(`<tr>
-<td>${text}</td>
+<td id="text-${id}">${text}</td>
 <td>${new Date(createdAt).toLocaleString()}</td>
 <td>
 <div class="btn-group" role="group">
+  <button type="button" class="btn btn-info btn-sm" id="btn-copy-${id}">Copy</button>
   <a role="button" class="btn btn-info btn-sm" href="${url}">Goto</a>
   <button type="button" class="btn btn-danger btn-sm" id="btn-delete-${id}">Delete</button>
 </div>
@@ -42,12 +43,20 @@ async function refresh() {
   document.getElementById('text-list').innerHTML = table.join("");
 
   for(const row of rows) {
-    let [id] = row;
+    let [id, text] = row;
     document.getElementById(`btn-delete-${id}`).onclick = async function () {
       if(confirm("Are you sure?")) {
         await removeTexts(id);
         refresh();
       }
+    };
+    const copyButton = document.getElementById(`btn-copy-${id}`);
+    copyButton.onclick = function () {
+      navigator.clipboard.writeText(document.getElementById(`text-${id}`).innerHTML);
+      copyButton.innerHTML = 'Copied';
+      setTimeout(function() {
+        copyButton.innerHTML = 'Copy';
+      }, 1000);
     };
   }
 }

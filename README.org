@@ -6,7 +6,15 @@
 #+OPTIONS: toc:nil num:nil
 #+STARTUP: content
 
-A Chrome extension to save texts anytime, anywhere.
+#+begin_example
+A browser extension to save texts anytime, anywhere.
+#+end_example
 
+When click `Add to Text Saver` in context menu, current selection will be saved if there is any,
+otherwise URL of current tab will be saved.
+
+[[file:imgs/640x400.png]]
+* Install
+TBD
 * License
 [[http://liujiacai.net/license/MIT.html?year=2015][MIT License]] © Jiacai Liu
