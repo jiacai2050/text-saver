@@ -7,17 +7,24 @@
 #+STARTUP: content
 
 [[https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml][https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml/badge.svg]]
+[[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][https://img.shields.io/chrome-web-store/v/egelicndigijclebpggemngfhpnkeglk.svg?style=plastic]]
 #+begin_quote
 A browser extension to save texts anytime, anywhere.
 #+end_quote
 
-When click =Add to Text Saver= in context menu, current selection will be saved if there is any,
-otherwise URL of current tab will be saved.
+When I read issues/pulls of my favorite projects, I always learn something new,
+and often there are comments I think are worth digging further, but GitHub has no =SAVE= button for single issue/pull, not to mention specific comment, so I create =Text Saver= to fix this.
 
+When click =Add to Text Saver= in context menu, current text selection will be saved if there is any, otherwise URL of current tab will be saved.
+
+All saved texts can be viewed in option page, and users can export their saved texts to local disk.
+
+[[https://github.com/jiacai2050/text-saver/issues][Open an issue]] if you have any suggestions or issues.
+
+* Install
+- [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][Chrome web store]]
 * Screenshots
 [[file:imgs/640x400.png]]
 [[file:imgs/1280x800.png]]
-* Install
-TBD
 * License
 [[http://liujiacai.net/license/MIT.html?year=2023][MIT License]] © Jiacai Liu
