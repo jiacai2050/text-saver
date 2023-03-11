@@ -73,12 +73,16 @@ window.onload = async function () {
     }
   };
   document.getElementById('btn-export').onclick = async function () {
-    const allTexts = await getTexts();
-    const payload = new Blob([JSON.stringify(allTexts, null, 2)], {
+    const payload = {
+      homepage: 'https://github.com/jiacai2050/text-saver',
+      createdAt: new Date().toLocaleString(),
+      texts: await getTexts(),
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
       type: 'application/json',
     });
     chrome.downloads.download({
-      url: URL.createObjectURL(payload),
+      url: URL.createObjectURL(blob),
       saveAs: true,
       filename: 'saved-texts.json',
     });

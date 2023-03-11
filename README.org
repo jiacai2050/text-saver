@@ -17,14 +17,18 @@ and often there are comments I think are worth digging further, but GitHub has n
 
 When click =Add to Text Saver= in context menu, current text selection will be saved if there is any, otherwise URL of current tab will be saved.
 
-All saved texts can be viewed in option page, and users can export their saved texts to local disk.
+All saved texts can be viewed in option page, and users can export their saved texts to local disk, so no need to worry about vendor lock-in.
 
 [[https://github.com/jiacai2050/text-saver/issues][Open an issue]] if you have any suggestions or issues.
 
+[[https://www.producthunt.com/posts/textsaver][https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=383517&theme=light]]
+
 * Install
-- [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][Chrome web store]]
+- [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][Chrome Web Store]]
 * Screenshots
 [[file:imgs/640x400.png]]
 [[file:imgs/1280x800.png]]
+* Changelog
+- v1.0.1 (2023-03-11) :: First release
 * License
 [[http://liujiacai.net/license/MIT.html?year=2023][MIT License]] © Jiacai Liu
