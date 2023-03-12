@@ -8,6 +8,7 @@
 
 [[https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml][https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml/badge.svg]]
 [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][https://img.shields.io/chrome-web-store/v/egelicndigijclebpggemngfhpnkeglk.svg?style=plastic]]
+[[https://addons.mozilla.org/firefox/addon/text-saver/][https://img.shields.io/amo/v/text-saver.svg?style=plastic]]
 #+begin_quote
 A browser extension to save texts anytime, anywhere.
 #+end_quote
@@ -25,10 +26,12 @@ All saved texts can be viewed in option page, and users can export their saved t
 
 * Install
 - [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][Chrome Web Store]]
+- [[https://addons.mozilla.org/firefox/addon/text-saver/][Firefox Add-ons]]
 * Screenshots
 [[file:imgs/640x400.png]]
 [[file:imgs/1280x800.png]]
 * Changelog
+- v1.1.0 (2023-03-12) :: Add option settings
 - v1.0.1 (2023-03-11) :: First release
 * License
 [[http://liujiacai.net/license/MIT.html?year=2023][MIT License]] © Jiacai Liu

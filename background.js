@@ -26,15 +26,24 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
     },
   };
   await chrome.storage.local.set(row);
-  await chrome.notifications.create(null, {
-    type: 'basic',
-    title: pageUrl,
-    contextMessage: 'Saved',
-    message: selectionText,
-    iconUrl: 'imgs/logo.png',
-  });
+  if (await getNotification())
+    await chrome.notifications.create(null, {
+      type: 'basic',
+      title: pageUrl,
+      contextMessage: 'Saved',
+      message: selectionText,
+      iconUrl: 'imgs/logo.png',
+    });
 });
 
 chrome.action.onClicked.addListener(function () {
   chrome.runtime.openOptionsPage();
 });
+
+// Firefox doesn't support module background.js directly
+// So this fn is duplicated with Options
+async function getNotification() {
+  const key = 'enable-notification';
+  const opt = await chrome.storage.sync.get({ [key]: false });
+  return opt[key];
+}
