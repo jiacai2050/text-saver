@@ -19,7 +19,6 @@ export class Options {
   async clear() {
     return await this.storage.clear(null);
   }
-  // Mainly for testing
   async dump() {
     return await this.storage.get(null);
   }

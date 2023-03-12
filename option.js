@@ -18,6 +18,16 @@ async function textStats() {
   return await chrome.storage.local.getBytesInUse(null);
 }
 
+function humanSize(size) {
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let i = 0;
+  while (i < units.length - 1 && size >= 1024) {
+    size /= 1024;
+    i += 1;
+  }
+  return `${size.toFixed(2)} ${units[i]}`;
+}
+
 async function refresh() {
   let rows = [];
   for (const [id, { text, url, createdAt }] of Object.entries(
@@ -31,7 +41,7 @@ async function refresh() {
   for (const row of rows) {
     let [id, text, url, createdAt] = row;
     table.push(`<tr>
-<td id="text-${id}">${text}</td>
+<td id="text-${id}"></td>
 <td>${new Date(createdAt).toLocaleString()}</td>
 <td>
 <div class="btn-group" role="group">
@@ -48,6 +58,8 @@ async function refresh() {
 
   for (const row of rows) {
     let [id, text] = row;
+    // use `textContent` to prevent XSS
+    document.getElementById(`text-${id}`).textContent = text;
     document.getElementById(`btn-delete-${id}`).onclick = async function () {
       if (confirm('Are you sure?')) {
         await removeTexts(id);
@@ -71,7 +83,7 @@ window.onload = async function () {
   let opt = new Options(chrome.storage.sync);
 
   document.getElementById('btn-clear').onclick = async function () {
-    if (confirm('Are you sure to clear all texts?')) {
+    if (confirm('Are you sure to clear all saved texts?')) {
       await clearTexts();
       await refresh();
     }
@@ -97,15 +109,12 @@ window.onload = async function () {
   };
 
   // console.log(await opt.dump());
-  const cbNotification = document.getElementById('cb-notification');
-  cbNotification.checked = await opt.getNotification();
-  cbNotification.onclick = async function () {
-    opt.setNotification(cbNotification.checked);
+  document.getElementById('input-size').value = humanSize(await textStats());
+  const inputNotification = document.getElementById('input-notification');
+  inputNotification.checked = await opt.getNotification();
+  inputNotification.onclick = async function () {
+    opt.setNotification(inputNotification.checked);
   };
-
-  // document.getElementById('btn-reset-default').onclick = async function () {
-  //   opt.clear();
-  // };
 
   await refresh();
 };

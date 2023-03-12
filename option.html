@@ -24,9 +24,6 @@
         <button type="button" class="btn btn-primary btn-sm" id="btn-export">
           Export
         </button>
-        <button type="button" class="btn btn-danger btn-sm" id="btn-clear">
-          Clear ALL
-        </button>
       </div>
       <table class="table table-hover table-responsive">
         <thead>
@@ -40,18 +37,42 @@
       </table>
 
       <div class="card">
-        <h5 class="card-header">Options</h5>
+        <h5 class="card-header">Settings</h5>
         <div class="card-body">
-          <div class="form-group">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="cb-notification"
-            />
-            <label class="form-check-label" for="cb-notification">
-              Enable notification after save text
+          <div class="form-group row">
+            <label for="input-size" class="col-sm-2 col-form-label"
+              >Storage Size
             </label>
+            <div class="col-sm-10">
+              <input class="form-control" readonly id="input-size" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="input-notification" class="col-sm-2"
+              >Enable notification</label
+            >
+            <div>
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-control"
+                  id="input-notification"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                id="btn-clear"
+              >
+                Clear ALL texts
+              </button>
+            </div>
           </div>
         </div>
       </div>
