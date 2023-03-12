@@ -1,5 +1,7 @@
 'use strict';
 
+import { Options } from './module.js';
+
 async function getTexts() {
   return await chrome.storage.local.get();
 }
@@ -66,6 +68,8 @@ async function refresh() {
 }
 
 window.onload = async function () {
+  let opt = new Options(chrome.storage.sync);
+
   document.getElementById('btn-clear').onclick = async function () {
     if (confirm('Are you sure to clear all texts?')) {
       await clearTexts();
@@ -73,8 +77,12 @@ window.onload = async function () {
     }
   };
   document.getElementById('btn-export').onclick = async function () {
+    const { version, author, homepage_url } =
+      await chrome.runtime.getManifest();
     const payload = {
-      homepage: 'https://github.com/jiacai2050/text-saver',
+      homepage: homepage_url,
+      version: version,
+      author: author,
       createdAt: new Date().toLocaleString(),
       texts: await getTexts(),
     };
@@ -87,6 +95,17 @@ window.onload = async function () {
       filename: 'saved-texts.json',
     });
   };
+
+  // console.log(await opt.dump());
+  const cbNotification = document.getElementById('cb-notification');
+  cbNotification.checked = await opt.getNotification();
+  cbNotification.onclick = async function () {
+    opt.setNotification(cbNotification.checked);
+  };
+
+  // document.getElementById('btn-reset-default').onclick = async function () {
+  //   opt.clear();
+  // };
 
   await refresh();
 };

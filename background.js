@@ -1,9 +1,9 @@
 'use strict';
 
-const ADD_NOTE_ID = 'add-to-notes';
+const ADD_TEXT_ID = 'add-text';
 chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.create({
-    id: ADD_NOTE_ID,
+    id: ADD_TEXT_ID,
     title: 'Add to Text Saver',
     type: 'normal',
     contexts: ['selection', 'page'],
@@ -12,19 +12,17 @@ chrome.runtime.onInstalled.addListener(async () => {
 
 chrome.contextMenus.onClicked.addListener(async (item) => {
   let { pageUrl, selectionText } = item;
-  console.log(`item: ${pageUrl}, tab: ${selectionText}`);
   // when selection is null, fallback to url
   if (!selectionText) {
     selectionText = pageUrl;
   }
 
   let uuid = crypto.randomUUID();
-  const now = Date.now();
   const row = {
     [uuid]: {
       url: pageUrl,
       text: selectionText,
-      createdAt: now,
+      createdAt: Date.now(),
     },
   };
   await chrome.storage.local.set(row);
