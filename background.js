@@ -26,7 +26,7 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
     },
   };
   await chrome.storage.local.set(row);
-  if (await getNotification())
+  if (await getNotification()) {
     await chrome.notifications.create(null, {
       type: 'basic',
       title: pageUrl,
@@ -34,6 +34,7 @@ chrome.contextMenus.onClicked.addListener(async (item) => {
       message: selectionText,
       iconUrl: 'imgs/logo.png',
     });
+  }
 });
 
 chrome.action.onClicked.addListener(function () {

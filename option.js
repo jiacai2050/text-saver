@@ -2,6 +2,8 @@
 
 import { Options } from './module.js';
 
+const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
 async function getTexts() {
   return await chrome.storage.local.get();
 }
@@ -15,6 +17,15 @@ async function removeTexts(id) {
 }
 
 async function textStats() {
+  if (isFirefox) {
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1385832#c20
+    return new TextEncoder().encode(
+      Object.entries(await browser.storage.local.get())
+        .map(([key, value]) => key + JSON.stringify(value))
+        .join('')
+    ).length;
+  }
+
   return await chrome.storage.local.getBytesInUse(null);
 }
 
