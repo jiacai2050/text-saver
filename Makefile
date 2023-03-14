@@ -14,4 +14,4 @@ buildf:
 	git checkout -- manifest.json
 
 lint:
-	find . -type f -maxdepth 1 | grep -v org | grep -v Makefile | xargs npx prettier@2.7.1 --write
+	npx prettier@2.7.1 --write .

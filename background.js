@@ -10,11 +10,12 @@ chrome.runtime.onInstalled.addListener(async () => {
   });
 });
 
-chrome.contextMenus.onClicked.addListener(async (item) => {
+chrome.contextMenus.onClicked.addListener(async (item, tab) => {
   let { pageUrl, selectionText } = item;
-  // when selection is null, fallback to url
+  // when selection is null, fallback to title of current tab
+  // if title is also null, fallback to pageUrl
   if (!selectionText) {
-    selectionText = pageUrl;
+    selectionText = tab.title || pageUrl;
   }
 
   let uuid = crypto.randomUUID();
