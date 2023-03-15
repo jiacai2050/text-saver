@@ -6,16 +6,15 @@ chrome.runtime.onInstalled.addListener(async () => {
     id: ADD_TEXT_ID,
     title: 'Add to Text Saver',
     type: 'normal',
-    contexts: ['selection', 'page'],
+    contexts: ['all'],
   });
 });
 
 chrome.contextMenus.onClicked.addListener(async (item, tab) => {
-  let { pageUrl, selectionText } = item;
-  // when selection is null, fallback to title of current tab
-  // if title is also null, fallback to pageUrl
+  let { pageUrl, srcUrl, selectionText } = item;
+  // when selection is null, fallback to others.
   if (!selectionText) {
-    selectionText = tab.title || pageUrl;
+    selectionText = srcUrl || tab.title || pageUrl;
   }
 
   let uuid = crypto.randomUUID();

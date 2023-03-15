@@ -29,6 +29,12 @@ All saved texts can be viewed in option page, and users can export their saved t
 * Screenshots
 [[file:imgs/640x400.png]]
 [[file:imgs/1280x800.png]]
+* Used permission
+- =contextMenus=, interface to add texts
+- =storage=, =unlimitedStorage= where saved texts is stored.
+- =tab=, get title/url of current tab.
+- =notifications=, notify after save text successfully.
+- =downloads=, export saved texts.
 * Changelog
 - v1.2.0 (2023-03-12) ::
   - Use =textContent= to render saved texts to [[https://stackoverflow.com/a/68198131/2163429][avoid XSS]].
