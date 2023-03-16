@@ -53,11 +53,11 @@ async function refresh() {
     let [id, text, url, createdAt] = row;
     table.push(`<tr>
 <td id="text-${id}"></td>
-<td>${new Date(createdAt).toLocaleString()}</td>
+<td>${new Date(createdAt).toLocaleString('en-GB')}</td>
 <td>
 <div class="btn-group" role="group">
-  <button type="button" class="btn btn-info btn-sm" id="btn-copy-${id}">Copy</button>
-  <a role="button" class="btn btn-info btn-sm" href="${url}">Goto</a>
+  <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-${id}">Copy</button>
+  <a role="button" class="btn btn-secondary btn-sm" href="${url}">Goto</a>
   <button type="button" class="btn btn-danger btn-sm" id="btn-delete-${id}">Delete</button>
 </div>
 </td>
@@ -90,8 +90,42 @@ async function refresh() {
   }
 }
 
+function applyColorScheme(scheme) {
+  if (
+    scheme === 'system' &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  ) {
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-bs-theme', scheme);
+  }
+}
+
 window.onload = async function () {
   let opt = new Options(chrome.storage.sync);
+  // console.log(await opt.dump());
+  const selectColor = document.getElementById('select-color');
+  selectColor.value = await opt.getColorScheme();
+  applyColorScheme(selectColor.value);
+  selectColor.onchange = async function () {
+    await opt.setColorScheme(selectColor.value);
+    applyColorScheme(selectColor.value);
+  };
+
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', async (e) => {
+      const colorScheme = await opt.getColorScheme();
+      if (colorScheme === 'system') {
+        if (e.matches) {
+          // set to dark
+          applyColorScheme('dark');
+        } else {
+          // set to light
+          applyColorScheme('light');
+        }
+      }
+    });
 
   document.getElementById('btn-clear').onclick = async function () {
     if (confirm('Are you sure to clear all saved texts?')) {
@@ -119,7 +153,6 @@ window.onload = async function () {
     });
   };
 
-  // console.log(await opt.dump());
   document.getElementById('input-size').value = humanSize(await textStats());
   const inputNotification = document.getElementById('input-notification');
   inputNotification.checked = await opt.getNotification();

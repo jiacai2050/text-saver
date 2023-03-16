@@ -13,9 +13,12 @@
 A browser extension to save texts anytime, anywhere.
 #+end_quote
 
-When I read issues/pulls of my favorite projects on GitHub, often there are comments I think are worth digging further, but GitHub has no =SAVE= button for single issue/pull, not to mention specific comment, so I create =Text Saver= to fix this, once and for all.
+When read issues/pulls of my favorite projects on GitHub, often there are comments I think are worth digging further, but GitHub has no =SAVE= button for single issue/pull, not to mention specific comment, so I create =Text Saver= to fix this, once and for all.
 
-=Text Saver= works on any website, just click =Add to Text Saver= in context menu, then current text selection will be saved if there is any, otherwise URL of current tab will be saved.
+=Text Saver= works on any website, just click =Add to Text Saver= in context menu, then
+- Current text selection will be saved if there is any, otherwise
+- Current link will be saved if mouse hover on image or link, otherwise
+- URL of current tab will be saved when none of above are met.
 
 All saved texts can be viewed in option page, and users can export their saved texts to local disk, so no need to worry about vendor lock-in.
 
@@ -36,6 +39,10 @@ All saved texts can be viewed in option page, and users can export their saved t
 - =notifications=, notify after save text successfully.
 - =downloads=, export saved texts.
 * Changelog
+- v1.4.0 (2023-03-16) ::
+  - Support color scheme switch(aka dark mode)
+- v1.3.0 (2023-03-14) ::
+  - contextMenu type change to all, so when right-click on an image or hyperlink, we can save link address.
 - v1.2.0 (2023-03-12) ::
   - Use =textContent= to render saved texts to [[https://stackoverflow.com/a/68198131/2163429][avoid XSS]].
   - Rename option to setting, and add =storage size= statistics.

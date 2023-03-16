@@ -39,32 +39,43 @@
       <div class="card">
         <h5 class="card-header">Settings</h5>
         <div class="card-body">
-          <div class="form-group row">
+          <div class="mb-3 row">
             <label for="input-size" class="col-sm-2 col-form-label"
               >Storage Size
             </label>
             <div class="col-sm-10">
-              <input class="form-control" readonly id="input-size" />
+              <input class="form-control-plaintext" disabled id="input-size" />
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="input-notification" class="col-sm-2"
+          <div class="mb-3 row">
+            <label for="input-notification" class="col-sm-2 col-form-label"
               >Enable notification</label
             >
-            <div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-control"
-                  id="input-notification"
-                />
-              </div>
+            <div class="col-sm-10">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="input-notification"
+              />
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="mb-3 row">
+            <label for="select-theme" class="col-sm-2 col-form-label"
+              >Color Scheme</label
+            >
             <div class="col-sm-10">
+              <select class="form-select" id="select-color">
+                <option value="system">Sync with System</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <div class="col-sm-2">
               <button
                 type="button"
                 class="btn btn-danger btn-sm"

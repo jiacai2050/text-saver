@@ -2,6 +2,9 @@
 
 export class Options {
   static keyNotification = 'enable-notification';
+  // system, light, dark
+  static keyColor = 'color-scheme';
+
   constructor(storage) {
     this.storage = storage;
   }
@@ -13,6 +16,15 @@ export class Options {
 
   async setNotification(enable) {
     return await this.storage.set({ [Options.keyNotification]: enable });
+  }
+
+  async getColorScheme() {
+    const opt = await this.storage.get({ [Options.keyColor]: 'system' });
+    return opt[Options.keyColor];
+  }
+
+  async setColorScheme(scheme) {
+    return await this.storage.set({ [Options.keyColor]: scheme });
   }
 
   // Mainly for testing
