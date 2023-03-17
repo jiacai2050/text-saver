@@ -29,6 +29,7 @@ All saved texts can be viewed in option page, and users can export their saved t
 * Install
 - [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][Chrome Web Store]]
 - [[https://addons.mozilla.org/firefox/addon/text-saver/][Firefox Add-ons]]
+- [[https://microsoftedge.microsoft.com/addons/detail/text-saver/pbjcfmfdhpogmclbpfenjkajicbpfeco][Edge Add-ons]]
 * Screenshots
 [[file:imgs/640x400.png]]
 [[file:imgs/1280x800.png]]
