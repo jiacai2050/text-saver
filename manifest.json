@@ -1,6 +1,6 @@
 {
   "name": "Text Saver",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Save texts anytime, anywhere",
   "homepage_url": "https://github.com/jiacai2050/text-saver",
   "author": "liujiacai@yandex.com",
@@ -23,7 +23,6 @@
     "contextMenus",
     "notifications",
     "downloads",
-    "tabs",
     "storage",
     "unlimitedStorage"
   ],
