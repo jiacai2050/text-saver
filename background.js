@@ -1,14 +1,24 @@
 'use strict';
 
 const ADD_TEXT_ID = 'add-text';
-chrome.runtime.onInstalled.addListener(async () => {
+const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+createMenus();
+
+function createMenus() {
+  let ctx = ['all'];
+  // Firefox support more contexts
+  if (isFirefox) {
+    ctx = ['all', 'bookmark', 'tab'];
+  }
+
   chrome.contextMenus.create({
     id: ADD_TEXT_ID,
     title: 'Add to Text Saver',
     type: 'normal',
-    contexts: ['all'],
+    contexts: ctx,
   });
-});
+}
 
 chrome.contextMenus.onClicked.addListener(async (item, tab) => {
   let { pageUrl, srcUrl, selectionText } = item;
