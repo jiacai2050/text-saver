@@ -6,6 +6,11 @@
 #+OPTIONS: toc:nil num:nil
 #+STARTUP: content
 
+#+begin_quote
+[!TIP]
+Repo Move to https://github.com/jiacai2050/my-works/tree/main/text-saver
+#+end_quote
+
 [[https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml][https://github.com/jiacai2050/text-saver/actions/workflows/CI.yml/badge.svg]]
 [[https://chrome.google.com/webstore/detail/text-saver/egelicndigijclebpggemngfhpnkeglk][https://img.shields.io/chrome-web-store/v/egelicndigijclebpggemngfhpnkeglk.svg?style=plastic]]
 [[https://addons.mozilla.org/firefox/addon/text-saver/][https://img.shields.io/amo/v/text-saver.svg?style=plastic]]
